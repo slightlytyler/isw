@@ -1,19 +1,25 @@
 <% current_week = @feed_entries.first.published.strftime('%W') %>
 <% first_week = @feed_entries.last.published.strftime('%W') %>
+
 <ul class="block feed-entries">
   <% (first_week..current_week).reverse_each do |i| %>
-    <ul class="clearfix block filter-group">
+
+    <div class="clearfix block filter-group">
+
       <% @feed_entries.each do |entry| %>
         <% if (entry.published.strftime('%W') == i) && (entry.title.include? 'Control') %>
+
           <% content_stripped = Nokogiri::HTML(entry.content) %>
           <% @img_srcs = content_stripped.css('img').map{ |i| i['src'] } %>
-          <li style="width: 10%; float: left;">
-            <%= link_to "#{entry.title}", "#{entry.url}",:target => "_blank" %>
-            <%= entry.published.strftime('%W') %>
-            <%= image_tag @img_srcs[0], style: 'width: 100%; height: auto;' %>
-          </li>
+
+          <div class="entry">
+            <%= image_tag @img_srcs[0], class: 'giffy' %>
+          </div>
+
         <% end %>
       <%end%>
-    </ul>
+
+    </div>
+
   <% end %>
 </ul>

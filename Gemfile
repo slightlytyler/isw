@@ -31,6 +31,7 @@ group :development do
   gem 'guard-livereload', require: false
 end
 
+gem "bower-rails", "~> 0.8.3"
 gem 'feedjira'
 
 
