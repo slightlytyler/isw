@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'annotate', "~> 2.6.5"
+  gem "better_errors"
   gem 'guard'
   gem 'guard-livereload', require: false
 end
@@ -34,6 +36,7 @@ gem 'rails_12factor', group: :production
 
 gem "bower-rails", "~> 0.8.3"
 gem 'feedjira'
+gem 'protected_attributes'
 gem 'bourbon'
 
 

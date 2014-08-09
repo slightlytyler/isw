@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'posts#index'
+
+  resources :posts do
+    collection do
+      get :update_all
+    end
+  end
   
 
   # Example of regular route:

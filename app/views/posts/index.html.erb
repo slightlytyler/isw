@@ -1,15 +1,17 @@
-<% current_week = @feed_entries.first.published.strftime('%W') %>
-<% first_week = @feed_entries.last.published.strftime('%W') %>
+<% current_week = @posts.first.published_at.strftime('%W') %>
+<% first_week = @posts.last.published_at.strftime('%W') %>
+
+<li><%=link_to "Update Feed",update_all_posts_path%></li>
 
 <ul class="block feed-entries">
   <% (first_week..current_week).reverse_each do |i| %>
 
     <div class="clearfix block filter-group">
 
-      <% @feed_entries.reverse.each do |entry| %>
-        <% if (entry.published.strftime('%W') == i) && (entry.title.include? 'Control') %>
+      <% @posts.reverse.each_with_index do |post, index| %>
+        <% if (post.published_at.strftime('%W') == i) && (post.name.include? 'Control') %>
 
-          <% content_stripped = Nokogiri::HTML(entry.content) %>
+          <% content_stripped = Nokogiri::HTML(post.content) %>
           <% @img_srcs = content_stripped.css('img').map{ |i| i['src'] } %>
 
           <div class="entry">

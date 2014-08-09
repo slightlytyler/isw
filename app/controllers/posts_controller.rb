@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   require 'nokogiri'
 
   def index
-    feed = Feedjira::Feed.fetch_and_parse("http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=28")
-    @feed_entries = feed.entries
+    @posts = Post.order("published_at DESC")
+  end
+
+  def update_all
+    Post.update_from_feed
+    flash[:notice] = "Feed Updated"
+    redirect_to root_path
   end
 end
