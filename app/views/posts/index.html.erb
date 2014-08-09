@@ -6,8 +6,8 @@
 
     <div class="clearfix block filter-group">
 
-      <% @feed_entries.each do |entry| %>
-        <% if (entry.published.strftime('%W') == i) && (entry.title.include? 'Control') %>
+      <% @feed_entries.reverse.each do |entry| %>
+        <% if (entry.published.strftime('%W') == i) && (entry.title.include? 'Situation') %>
 
           <% content_stripped = Nokogiri::HTML(entry.content) %>
           <% @img_srcs = content_stripped.css('img').map{ |i| i['src'] } %>
