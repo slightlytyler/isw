@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: isw_development
+  database: isw
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -38,6 +38,6 @@ test:
 #
 production:
   <<: *default
-  database: isw_production
+  database: isw
   username: isw
   password: <%= ENV['SIMPLEREMIND_DATABASE_PASSWORD'] %>
