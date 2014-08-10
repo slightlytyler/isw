@@ -1,21 +1,22 @@
-<ul class="menu">
-  <li><a href="/week">Week</a></li>
-  <li><a href="/month">Month</a></li>
-  <li><a href="/year">Year</a></li>
-  <li><%=link_to "Update Feed",update_all_posts_path%></li>
-</ul>
-
 <div class="block feed-entries">
   <% (@first_year..@current_year).reverse_each do |year| %>
     <h2><%= year %></h2>
-    <% (@first_week..@current_week).reverse_each do |week| %>
-      <% weeks_posts = get_weeks_posts(week, year) %>
-      <% if weeks_posts.last.published_at.strftime('%B') == weeks_posts.first.published_at.strftime('%B') %>
-        <h3><%= weeks_posts.last.published_at.strftime('%B') %></h3>
-      <% else %>
-        <h3><%= weeks_posts.last.published_at.strftime('%B') %> / <%= weeks_posts.first.published_at.strftime('%B') %></h3>
+
+    <ul>
+      <% (@first_week..@current_week).reverse_each do |week| %>
+        <% weeks_posts = get_weeks_posts(week, year) %>
+
+        <a href="/week/<%= week %>/<%= year %>"><li>
+          <% if weeks_posts.last.published_at.strftime('%B') == weeks_posts.first.published_at.strftime('%B') %>
+            <h3><%= weeks_posts.last.published_at.strftime('%B') %></h3>
+          <% else %>
+            <h3><%= weeks_posts.last.published_at.strftime('%B') %> / <%= weeks_posts.first.published_at.strftime('%B') %></h3>
+          <% end %>
+          <h4><%= weeks_posts.last.published_at.strftime('%e') %> - <%= weeks_posts.first.published_at.strftime('%e') %></h4>
+        </li></a>
+
       <% end %>
-      <h4><%= weeks_posts.last.published_at.strftime('%e') %> - <%= weeks_posts.first.published_at.strftime('%e') %></h4>
-    <% end %>
+    </ul>
+
   <% end %>
 </div>
