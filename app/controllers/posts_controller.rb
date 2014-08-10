@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def prev_monday
-
+    return Chronic.parse('today')
   end
   helper_method :prev_monday
 
