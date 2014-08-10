@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-
   private
   def get_range
     @current_year = @posts.first.year
