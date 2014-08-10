@@ -10,7 +10,7 @@
 #  week         :integer
 #  month        :integer
 #  year         :integer
-#  image        :string(255)
+#  image        :text
 #  content      :text
 #  created_at   :datetime
 #  updated_at   :datetime
@@ -22,17 +22,19 @@ class Post < ActiveRecord::Base
   def self.update_from_feed
     feed = Feedjira::Feed.fetch_and_parse("http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000")
     feed.entries.each do |entry|
-      record = Post.find_or_initialize_by(guide: entry.id)
-      record.name          = entry.title
-      record.url           = entry.url
-      record.published_at  = entry.published
-      record.week          = entry.published.strftime('%W')
-      record.month          = entry.published.strftime('%M')
-      record.year          = entry.published.strftime('%Y')
-      record.guide         = entry.id
-      record.image         = Nokogiri::HTML(entry.content).css('img').map{ |i| i['src'] }[0]
-      record.content       = entry.content
-      record.save
+      if entry.title.include? 'Situation'
+        record = Post.find_or_initialize_by(guide: entry.id)
+        record.name          = entry.title
+        record.url           = entry.url
+        record.published_at  = entry.published
+        record.week          = entry.published.strftime('%W')
+        record.month          = entry.published.strftime('%M')
+        record.year          = entry.published.strftime('%Y')
+        record.guide         = entry.id
+        record.image         = Nokogiri::HTML(entry.content).css('img').map{ |i| i['src'] }[0]
+        record.content       = entry.content
+        record.save
+      end
     end
   end
 end

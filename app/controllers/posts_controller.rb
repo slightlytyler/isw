@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
   def index
-    get_posts
+    @posts = Post.order("published_at DESC")
+    get_range
   end
 
   def week
     @week = params[:week]
     @year = params[:year]
-    get_posts
-    @weeks_posts = Post.order("published_at DESC").where(week: @week).select { |post| post.name.include? 'Situation' }
+    @posts = Post.order("published_at DESC").where(week: @week, year: @year)
+    get_range
   end
 
   def update_all
@@ -17,8 +18,7 @@ class PostsController < ApplicationController
   end
 
   private
-  def get_posts
-    @posts = Post.order("published_at DESC").select { |post| post.name.include? 'Situation' }
+  def get_range
     @current_year = @posts.first.year
     @first_year = @posts.last.year
     @current_week = @posts.first.week

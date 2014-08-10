@@ -10,7 +10,7 @@
 #  week         :integer
 #  month        :integer
 #  year         :integer
-#  image        :string(255)
+#  image        :text
 #  content      :text
 #  created_at   :datetime
 #  updated_at   :datetime
