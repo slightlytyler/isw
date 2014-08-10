@@ -7,6 +7,9 @@
 #  name         :string(255)
 #  url          :string(255)
 #  published_at :datetime
+#  week         :integer
+#  month        :integer
+#  year         :integer
 #  image        :string(255)
 #  content      :text
 #  created_at   :datetime

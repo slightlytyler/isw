@@ -5,7 +5,10 @@ class CreatePosts < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.datetime :published_at
-      t.string :image
+      t.integer :week
+      t.integer :month
+      t.integer :year
+      t.text :image
       t.text :content
 
       t.timestamps
