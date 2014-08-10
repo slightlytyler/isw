@@ -10,9 +10,7 @@
     <h2><%= year %></h2>
     <% (@first_week..@current_week).reverse_each do |week| %>
       <h3><%= week %></h3>
-      <% @posts.where(week: week).reverse_each do |post| %>
-        <%= image_tag post.image %>
-      <% end %>
+      <%= prev_monday %>
     <% end %>
   <% end %>
 </div>

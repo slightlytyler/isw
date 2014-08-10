@@ -17,6 +17,11 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def prev_monday
+
+  end
+  helper_method :prev_monday
+
   private
   def get_range
     @current_year = @posts.first.year

@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   def self.update_from_feed
     feed = Feedjira::Feed.fetch_and_parse("http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000")
     feed.entries.each do |entry|
-      if entry.title.include? 'Situation'
+      if entry.title.include? 'Situation Report'
         record = Post.find_or_initialize_by(guide: entry.id)
         record.name          = entry.title
         record.url           = entry.url

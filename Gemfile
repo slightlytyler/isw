@@ -38,6 +38,7 @@ gem "bower-rails", "~> 0.8.3"
 gem 'feedjira'
 gem 'protected_attributes'
 gem 'bourbon'
+gem 'kronic'
 
 
 # Use ActiveModel has_secure_password
