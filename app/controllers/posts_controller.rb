@@ -17,10 +17,6 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  def prev_monday
-    return Chronic.parse('today')
-  end
-  helper_method :prev_monday
 
   private
   def get_range

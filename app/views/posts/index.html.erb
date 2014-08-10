@@ -10,7 +10,7 @@
     <h2><%= year %></h2>
     <% (@first_week..@current_week).reverse_each do |week| %>
       <h3><%= week %></h3>
-      <%= prev_monday %>
+      <%= first_monday(week, year) %>
     <% end %>
   <% end %>
 </div>
