@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140809032122) do
     t.integer  "month"
     t.integer  "year"
     t.text     "image"
+    t.text     "background_image"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"

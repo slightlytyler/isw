@@ -1,6 +1,7 @@
 <div class="giffy-container">
   <% @posts.reverse.each do |post| %>
     <div>
+      <%= post.background_image %>
       <%= image_tag post.image %>
     </div>
   <% end %>

@@ -40,6 +40,7 @@ gem 'protected_attributes'
 gem 'bourbon'
 gem 'neat'
 gem 'chronic'
+gem 'flickraw'
 
 
 # Use ActiveModel has_secure_password

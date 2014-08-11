@@ -9,7 +9,7 @@
         <% weeks_posts = get_weeks_posts(week, year) %>
 
         <li><a href="/week/<%= week %>/<%= year %>">
-          <section class="background-image"></section>
+          <section class="background-image"><%= weeks_posts.first.background_image %></section>
           <section class="date-info">
             <% if weeks_posts.last.published_at.strftime('%B') == weeks_posts.first.published_at.strftime('%B') %>
               <h3 class="month"><%= weeks_posts.last.published_at.strftime('%B') %></h3>

@@ -9,6 +9,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :month
       t.integer :year
       t.text :image
+      t.text :background_image
       t.text :content
 
       t.timestamps
