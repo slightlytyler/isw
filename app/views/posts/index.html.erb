@@ -1,3 +1,9 @@
+<%=content_for :head do %>
+  <style type="text/css" media="screen">
+    body{ background-image: url('<%= get_home_image %>'); }
+  </style>
+<% end %>
+
 <div class="post-list">
   <% (@first_year..@current_year).reverse_each do |year| %>
 
@@ -9,7 +15,7 @@
         <% weeks_posts = get_weeks_posts(week, year) %>
 
         <li><a href="/week/<%= week %>/<%= year %>">
-          <section class="background-image"><%= weeks_posts.first.background_image %></section>
+          <section class="background-image" style="background-image: url('<%= weeks_posts.first.background_image %>')"></section>
           <section class="date-info">
             <% if weeks_posts.last.published_at.strftime('%B') == weeks_posts.first.published_at.strftime('%B') %>
               <h3 class="month"><%= weeks_posts.last.published_at.strftime('%B') %></h3>

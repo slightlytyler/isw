@@ -1,6 +1,5 @@
+header.main{ @include outer-container; }
 ul.menu{
-  @include outer-container;
-
   li{ 
     float: right; 
     margin-right: 1em;
