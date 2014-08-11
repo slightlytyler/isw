@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-// App Components
+//  Views
 //= posts
-// Bower Components
+//  App Components
+//= components/giffy
+//  Bower Components
 //= require slick-carousel/slick/slick

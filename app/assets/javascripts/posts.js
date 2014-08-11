@@ -1,8 +1,3 @@
-$(function(){
-  $('.giffy-container').slick({
-    autoplay: true,
-    autoplaySpeed: 500,
-    fade: true
-  });
-  console.log('working');
+$(document).on('ready page:load', function () {
+  giffy();
 });
