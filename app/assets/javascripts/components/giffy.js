@@ -2,7 +2,7 @@ function giffy(){
   $('.giffy-container').slick({
     autoplay: true,
     autoplaySpeed: 500,
-    fade: true
+    fade: true,
+    arrows: false
   });
-  console.log('working now');
 }

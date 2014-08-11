@@ -1,4 +1,9 @@
-header.main{ @include outer-container; }
+header.main{ 
+  background-color: $white-overlay;
+
+  div.wrapper{ @include outer-container; }
+}
+
 ul.menu{
   li{ 
     float: right; 
