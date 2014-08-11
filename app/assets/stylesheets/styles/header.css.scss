@@ -1,0 +1,10 @@
+ul.menu{
+  @include outer-container;
+
+  li{ 
+    float: right; 
+    margin-right: 1em;
+
+    &:last-child{ margin-right: 0; }
+  }
+}

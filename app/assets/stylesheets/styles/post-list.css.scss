@@ -1,0 +1,35 @@
+div.post-list{
+  h2{ text-align: center; }
+  ul{
+    @include outer-container;
+
+    li{
+      @include span-columns(4);
+      @include omega(3n);
+    }
+
+    @mixin post-item-border{ border: 1px solid $material-gray-blue; }
+
+    $post-item-background-color: $material-gray-blue;
+
+    section.background-image{
+      content: '';
+      width: 100%;
+      height: 0;
+      padding-bottom: 32.5%;
+      border-radius: 12px;
+      @include post-item-border;
+      border-bottom: none;
+    }
+
+    section.date-info{
+      display: block;
+      position: relative;
+      @include post-item-border;
+      border-top: none;
+      background-color: $post-item-background-color;
+      transform: translateY(-16%%);
+      padding: .3em .5em;
+    }
+  }
+}

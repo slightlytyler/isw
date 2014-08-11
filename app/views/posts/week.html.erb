@@ -1,3 +1,7 @@
-<% @posts.reverse.each do |post| %>
-  <%= image_tag post.image %>
-<% end %>
+<div class="giffy-container">
+  <% @posts.reverse.each do |post| %>
+    <div>
+      <%= image_tag post.image %>
+    </div>
+  <% end %>
+</div>

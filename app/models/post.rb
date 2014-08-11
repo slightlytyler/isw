@@ -20,8 +20,11 @@ class Post < ActiveRecord::Base
   attr_accessible :guide, :name, :url, :published_at, :week, :month, :year, :image, :content
 
   def self.update_from_feed
-    feed = Feedjira::Feed.fetch_and_parse("http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000")
-    feed.entries.each do |entry|
+    isw_url = 'http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000'
+    urls = [isw_url]
+    feeds = Feedjira::Feed.fetch_and_parse urls
+    isw_feed = feeds['http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000']
+    isw_feed.entries.each do |entry|
       if entry.title.include? 'Situation Report'
         record = Post.find_or_initialize_by(guide: entry.id)
         record.name          = entry.title
