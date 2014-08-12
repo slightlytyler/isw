@@ -7,10 +7,12 @@
 <div class="post-list">
   <% (@first_year..@current_year).reverse_each do |year| %>
 
-    <section class="increment-title">
-      <%= fa_icon "bookmark" %>
-      <span><%= year %></span>
-    </section>
+    <div class="year-banner">
+      <section>
+        <%= fa_icon "bookmark" %>
+        <span><%= year %></span>
+      </section>
+    </div>
 
     
     <ul>
@@ -23,8 +25,8 @@
           <%= link_to(path) do %>
             <section class="background-image" style="background-image: url('<%= group_posts.first.background_image %>')"></section>
             <section class="date-info">
-              <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
-              <h4 class="week"><%= year %></h4>
+              <h3 class="increment"><%= group_posts.last.published_at.strftime('%B') %> - <%= group_posts.first.published_at.strftime('%B') %></h3>
+              <h4 class="increment"><%= year %></h4>
             </section>
           <% end %>
         </li>
@@ -48,11 +50,11 @@
               <section class="background-image" style="background-image: url('<%= group_posts.first.background_image %>')"></section>
               <section class="date-info">
                 <% if group_posts.last.published_at.strftime('%B') == group_posts.first.published_at.strftime('%B') %>
-                  <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %></h3>
+                  <h3 class="increment"><%= group_posts.last.published_at.strftime('%B') %></h3>
                 <% else %>
-                  <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
+                  <h3 class="increment"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
                 <% end %>
-                <h4 class="week"><%= group_posts.last.published_at.strftime('%e') %> - <%= group_posts.first.published_at.strftime('%e') %></h4>
+                <h4 class="increment"><%= group_posts.last.published_at.strftime('%e') %> - <%= group_posts.first.published_at.strftime('%e') %></h4>
               </section>
             <% end %>
           </li>
