@@ -18,5 +18,6 @@
 //= posts
 //  App Components
 //= components/giffy
+//= components/resize-content
 //  Bower Components
 //= require slick-carousel/slick/slick

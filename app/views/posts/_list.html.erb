@@ -1,0 +1,29 @@
+<% year = locals[:year] %>
+<% increment_start = locals[:increment_start] %>
+<% increment_end = locals[:increment_end] %>
+<% (increment_start..increment_end).reverse_each do |increment| %>
+
+  <% if @increment == 'week' %>
+    <% group_posts = get_weeks_posts(increment, year) %>
+    <% path = week_posts_path(:week => increment, :year => year) %>
+  <% end %>
+
+  <% if @increment == 'month' %>
+    <% group_posts = get_months_posts(increment, year) %>
+    <% path = month_posts_path(:month => increment, :year => year) %>
+  <% end %>
+
+  <li>
+    <%= link_to(path) do %>
+      <section class="background-image" style="background-image: url('<%= group_posts.first.background_image %>')"></section>
+      <section class="date-info">
+        <% if group_posts.last.published_at.strftime('%B') == group_posts.first.published_at.strftime('%B') %>
+          <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %></h3>
+        <% else %>
+          <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
+        <% end %>
+        <h4 class="week"><%= group_posts.last.published_at.strftime('%e') %> - <%= group_posts.first.published_at.strftime('%e') %></h4>
+      </section>
+    <% end %>
+  </li>
+<% end %>

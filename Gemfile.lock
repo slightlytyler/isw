@@ -31,6 +31,8 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (2.2.0.20140804)
+      execjs
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -63,6 +65,8 @@ GEM
       sax-machine (~> 0.2.1)
     ffi (1.9.3)
     flickraw (0.9.8)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -182,6 +186,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.6.5)
+  autoprefixer-rails
   better_errors
   bourbon
   bower-rails (~> 0.8.3)
@@ -189,6 +194,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   feedjira
   flickraw
+  font-awesome-rails
   guard
   guard-livereload
   jbuilder (~> 2.0)

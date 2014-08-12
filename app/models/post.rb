@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
     FlickRaw.api_key="8e60dd79e0047a5c41f6f640cf5016e8"
     FlickRaw.shared_secret="8096d39dd9f30227"
     flickr_id = '50076792@N00'
-    @@flickr_feed = flickr.photos.search(:user_id => flickr_id, :sort => 'interestingness-desc')
+    @@flickr_feed = flickr.photos.search(:user_id => flickr_id, :sort => 'relevance')
 
     def self.update_from_feed
         isw_url = 'http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000'
@@ -41,7 +41,7 @@ class Post < ActiveRecord::Base
                 record.url              = entry.url
                 record.published_at     = entry.published
                 record.week             = entry.published.strftime('%W')
-                record.month            = entry.published.strftime('%M')
+                record.month            = entry.published.strftime('%m')
                 record.year             = entry.published.strftime('%Y')
                 record.guide            = entry.id
                 record.image            = Nokogiri::HTML(entry.content).css('img').map{ |i| i['src'] }[0]
@@ -54,7 +54,7 @@ class Post < ActiveRecord::Base
 
     def self.home_background
 
-        home_photo_id = @@flickr_feed[0].id
+        home_photo_id = @@flickr_feed[1].id
         home_photo_info = flickr.photos.getInfo(:photo_id => home_photo_id)
         return FlickRaw.url(home_photo_info)
     end

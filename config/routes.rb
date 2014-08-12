@@ -3,12 +3,20 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'posts#index'
-  get 'week/:week/:year'  =>  'posts#week'
+  root 'posts#week_index'
+  get 'week'  => 'posts#week_index'
+  get 'month'  => 'posts#month_index'
+  get 'year'  => 'posts#year_index'
+  get 'posts/week/:week/:year'  =>  'posts#week'
+  get 'posts/month/:month/:year'  =>  'posts#month'
+  get 'posts/year/:year'  =>  'posts#year'
 
   resources :posts do
     collection do
       get :update_all
+      get :week
+      get :month
+      get :year
     end
   end
   

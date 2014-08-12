@@ -1,11 +1,69 @@
 div.post-list{
-  h2{ text-align: center; }
+  padding: 3em 0 1em;
+
+  section.increment-title{
+    @extend %outer-container;
+    position:relative;
+
+    $banner-border-thickness: .5rem;
+
+    i.fa{
+      font-size: 3rem;
+      position: relative;
+
+      &:after{
+        content: '';
+        width: 100%;
+        height: $banner-border-thickness;
+        position: absolute;
+        transform: translateY(-$banner-border-thickness + .3rem);
+        background-color: $material-yellow;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+
+    span{
+      position: absolute;
+      left: .3rem;
+      top: .4rem;
+      color: $material-yellow;
+      font-size: .7rem;
+      font-weight: bold;
+    }
+  }
+
   ul{
-    @include outer-container;
+    @extend %outer-container;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
 
     li{
-      @include span-columns(4);
-      @include omega(3n);
+      margin-bottom: 2em;
+      @include span-columns(1 of 1);
+
+      @include media($smart){
+        @include span-columns(1 of 2);
+        @include omega(2n);
+      }
+
+      @include media($tablet){
+        @include span-columns(1 of 3);
+        @include omega(3n);
+      }
+
+      @include media($laptop){
+        @include span-columns(1 of 4);
+        @include omega(4n);
+      }
+
+      @include media($desktop){
+        @include span-columns(1 of 4);
+        @include omega(4n);
+      }
     }
 
     @mixin post-item-border{ border: 1px solid $material-gray-blue; }
@@ -30,9 +88,10 @@ div.post-list{
       position: relative;
       @include post-item-border;
       border-top: none;
+      border-radius: 3px;
       background-color: $post-item-background-color;
       transform: translateY(-16%%);
-      padding: .3em .5em;
+      padding: 1em .5em .3em;
     }
   }
 }

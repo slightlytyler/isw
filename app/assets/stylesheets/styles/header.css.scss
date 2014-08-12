@@ -1,14 +1,43 @@
 header.main{ 
-  background-color: $white-overlay;
+  @include clearfix;
+  padding: .3em 0;
+  background-color: $dark-overlay;
 
-  div.wrapper{ @include outer-container; }
+  div.wrapper{ 
+    @extend %outer-container;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+a.home{ 
+  display: block;
+  line-height: 0;
+  max-width: 8rem;
 }
 
 ul.menu{
-  li{ 
-    float: right; 
-    margin-right: 1em;
+  @include clearfix;
+  display: inline-block; 
+  align-self: center;
 
-    &:last-child{ margin-right: 0; }
+  li{ 
+    float: left;
+    position: relative;
+    padding: 0 1.5em;
+
+    &.current:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      left: 0%;
+      top: -1.76em;
+      height: 5em;
+      background-color: $dark-overlay;
+      z-index: -1;
+    }
+
+    a{ @extend %title; }
   }
 }

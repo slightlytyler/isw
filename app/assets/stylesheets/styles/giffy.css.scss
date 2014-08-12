@@ -1,5 +1,5 @@
 .giffy-container{ 
-  @include outer-container; 
+  @extend %outer-container;
 }
 
 img.giffy{ width: 100%; }

@@ -1,33 +1,65 @@
 <%=content_for :head do %>
   <style type="text/css" media="screen">
-    body{ background-image: url('<%= get_home_image %>'); }
+    body:before{ background-image: url('<%= get_home_image %>'); }
   </style>
 <% end %>
 
 <div class="post-list">
   <% (@first_year..@current_year).reverse_each do |year| %>
 
-    <h2 class="year"><%= year %></h2>
+    <section class="increment-title">
+      <%= fa_icon "bookmark" %>
+      <span><%= year %></span>
+    </section>
 
+    
     <ul>
-      <% (@first_week..@current_week).reverse_each do |week| %>
+      <% if (@increment == 'year') %>
+      <% group_posts = get_years_posts( year) %>
+      <% path = year_posts_path(:year => year) %>
 
-        <% weeks_posts = get_weeks_posts(week, year) %>
+      <% (@increment_start..@increment_end).reverse_each do |increment| %>
+        <li>
+          <%= link_to(path) do %>
+            <section class="background-image" style="background-image: url('<%= group_posts.first.background_image %>')"></section>
+            <section class="date-info">
+              <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
+              <h4 class="week"><%= year %></h4>
+            </section>
+          <% end %>
+        </li>
+      <% end %>
 
-        <li><a href="/week/<%= week %>/<%= year %>">
-          <section class="background-image" style="background-image: url('<%= weeks_posts.first.background_image %>')"></section>
-          <section class="date-info">
-            <% if weeks_posts.last.published_at.strftime('%B') == weeks_posts.first.published_at.strftime('%B') %>
-              <h3 class="month"><%= weeks_posts.last.published_at.strftime('%B') %></h3>
-            <% else %>
-              <h3 class="month"><%= weeks_posts.last.published_at.strftime('%B') %> / <%= weeks_posts.first.published_at.strftime('%B') %></h3>
+      <% else %>
+        <% (@increment_start..@increment_end).reverse_each do |increment| %>
+
+          <% if @increment == 'week' %>
+            <% group_posts = get_weeks_posts(increment, year) %>
+            <% path = week_posts_path(:week => increment, :year => year) %>
+          <% end %>
+
+          <% if @increment == 'month' %>
+            <% group_posts = get_months_posts(increment, year) %>
+            <% path = month_posts_path(:month => increment, :year => year) %>
+          <% end %>
+
+          <li>
+            <%= link_to(path) do %>
+              <section class="background-image" style="background-image: url('<%= group_posts.first.background_image %>')"></section>
+              <section class="date-info">
+                <% if group_posts.last.published_at.strftime('%B') == group_posts.first.published_at.strftime('%B') %>
+                  <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %></h3>
+                <% else %>
+                  <h3 class="month"><%= group_posts.last.published_at.strftime('%B') %> / <%= group_posts.first.published_at.strftime('%B') %></h3>
+                <% end %>
+                <h4 class="week"><%= group_posts.last.published_at.strftime('%e') %> - <%= group_posts.first.published_at.strftime('%e') %></h4>
+              </section>
             <% end %>
-            <h4 class="week"><%= weeks_posts.last.published_at.strftime('%e') %> - <%= weeks_posts.first.published_at.strftime('%e') %></h4>
-          </section>
-        </a></li>
-
+          </li>
+        <% end %>
       <% end %>
     </ul>
+    
 
   <% end %>
 </div>

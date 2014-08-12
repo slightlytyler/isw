@@ -3,10 +3,33 @@ html, body{
   margin: 0;
 }
 
-body{
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+html{
+  font-size: 50%;
+  @include media($smart){ font-size: 56.75%; }
+  @include media($tablet){ font-size: 71.16%; }
+  @include media($laptop){ font-size: 85.58%; }
+  @include media($desktop){ font-size: 100%; }
 }
 
-.btn{ @include button; }
+body{
+  position: relative;
+
+  &:before{
+    content: '';
+    @include position(absolute, 0px 0px 0px 0px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+    opacity: .3;
+  }
+}
+
+%outer-container{
+  @include outer-container;
+
+  @media screen and (max-width: 68em){
+    padding: 0 1em;
+  }
+}

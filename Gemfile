@@ -41,6 +41,8 @@ gem 'bourbon'
 gem 'neat'
 gem 'chronic'
 gem 'flickraw'
+gem "autoprefixer-rails"
+gem "font-awesome-rails"
 
 
 # Use ActiveModel has_secure_password
