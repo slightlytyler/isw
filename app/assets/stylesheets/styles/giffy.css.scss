@@ -1,5 +1,13 @@
 .giffy-container{ 
   @extend %outer-container;
+  text-align: center;
+
+
+  h2.title{ 
+    @extend %title; 
+    @extend %title-overlay;
+    margin: 1em 0 .6em;
+  }
 }
 
 img.giffy{ width: 100%; }

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def week_index
-    @increment = 'week';
+    @increment = 'week'
     @posts = Post.order("published_at DESC")
     get_range
     @increment_end = @posts.first.week
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def month_index
-    @increment = 'month';
+    @increment = 'month'
     @posts = Post.order("published_at DESC")
     get_range
     @increment_end = @posts.first.month
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def year_index
-    @increment = 'year';
+    @increment = 'year'
     @posts = Post.order("published_at DESC")
     get_range
     @increment_end = @current_year
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def week
+    @increment = 'week'
     @week = params[:week]
     @year = params[:year]
     @posts = Post.order("published_at DESC").where(week: @week, year: @year)
@@ -38,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def month
+    @increment = 'month'
     @month = params[:month]
     @year = params[:year]
     @posts = Post.order("published_at DESC").where(month: @month, year: @year)
@@ -46,6 +48,7 @@ class PostsController < ApplicationController
   end
 
   def year
+    @increment = 'year'
     @year = params[:year]
     @posts = Post.order("published_at DESC").where( year: @year)
     get_range
@@ -62,5 +65,6 @@ class PostsController < ApplicationController
   def get_range
     @current_year = @posts.first.year
     @first_year = @posts.last.year
+    @most_recent = Post.order("published_at DESC").first
   end
 end

@@ -1,0 +1,43 @@
+section.year-banner{
+  @extend %outer-container;
+  position: relative;
+  text-align: left;
+
+  div{
+    position: relative;
+    display: inline-block;
+  }
+
+  $banner-border-thickness: .5rem;
+
+  i.fa{
+    font-size: 3rem;
+    position: relative;
+
+    &:after{
+      content: '';
+      width: 100%;
+      height: $banner-border-thickness;
+      position: absolute;
+      transform: translateY(-$banner-border-thickness + .3rem);
+      background-color: $material-yellow;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  span{
+    position: absolute;
+    left: .055rem;
+    top: .4rem;
+    color: $material-yellow;
+    font-size: .05rem;
+    font-weight: bold;
+
+   @media (min-width: $small-screen){
+      left: .3rem;
+      font-size: .7rem; 
+   }
+  }
+}

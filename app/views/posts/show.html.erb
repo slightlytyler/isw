@@ -5,10 +5,43 @@
 <% end %>
 
 <div class="giffy-container">
-  <h2 class="title">Week</h2>
+  <% first = @posts.last.published_at %>
+  <% last = @posts.first.published_at %>
+
+  <% week = @posts.first.week %>
+  <% month = @posts.first.month %>
+  <% year = @first_year %>
+
+  <% next_week = (!(week == 53) ? week + 1 : 01 ) %>
+  <% next_month = (!(month == 12) ? month + 1 : 01 ) %>
+  <% next_year = (!(week == 53) ? year : year + 1 ) %>
+
+  <% months = (first.strftime('%B') == last.strftime('%B')) ? first.strftime('%B') : last.strftime('%B') + ' / ' + first.strftime('%B') %>
+
+  <h2 class="title"><%= months %> <%= first.strftime('%e') %> - <%= last.strftime('%e') %></h2>
+
+  <section class="year-banner">
+    <div>
+      <%= fa_icon "bookmark" %>
+      <span><%= year %></span>
+    </div>
+  </section>
+
   <% @posts.reverse.each do |post| %>
     <div>
-      <%= image_tag post.image %>
+      <% if @increment == 'week' %>
+        <% path = week_posts_path(:week => next_week, :year => next_year) %>
+      <% elsif @increment == 'month' %>
+        <% path = month_posts_path(:month => next_month, :year => next_year) %>
+      <% else %>
+        <% path = year_posts_path(:year => next_year) %>
+      <% end %>
+      <% has_next = (!(@most_recent.id == @posts.first.id) ? path : '#') %>
+
+      <%= link_to(has_next) do %>
+        <%= image_tag post.image %>
+      <% end %>
     </div>
   <% end %>
+
 </div>

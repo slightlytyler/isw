@@ -33,3 +33,9 @@ body{
     padding: 0 1em;
   }
 }
+
+%title-overlay{
+  display: inline-block;
+  background-color: $dark-overlay;
+  padding: .4em .6em;
+}

@@ -8,49 +8,6 @@ div.post-list{
 
   h4.increment{ font-size: 1rem; }
 
-  div.year-banner{
-    @extend %outer-container;
-    position: relative;
-
-    section{
-      position: relative;
-      display: inline-block;
-    }
-
-    $banner-border-thickness: .5rem;
-
-    i.fa{
-      font-size: 3rem;
-      position: relative;
-
-      &:after{
-        content: '';
-        width: 100%;
-        height: $banner-border-thickness;
-        position: absolute;
-        transform: translateY(-$banner-border-thickness + .3rem);
-        background-color: $material-yellow;
-        top: 0;
-        left: 0;
-        z-index: 1;
-      }
-    }
-
-    span{
-      position: absolute;
-      left: .055rem;
-      top: .4rem;
-      color: $material-yellow;
-      font-size: .05rem;
-      font-weight: bold;
-
-     @media (min-width: $small-screen){
-        left: .3rem;
-        font-size: .7rem; 
-     }
-    }
-  }
-
   ul{
     @extend %outer-container;
     display: flex;
@@ -60,6 +17,8 @@ div.post-list{
 
     li{
       margin-bottom: 2em;
+      border-radius: 11px;
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       @include span-columns(1 of 1);
 
       @include media($smart){
@@ -107,7 +66,7 @@ div.post-list{
       border-top: none;
       border-radius: 3px;
       background-color: $post-item-background-color;
-      transform: translateY(-16%%);
+      margin-top: -4%;
       padding: 1em .5em .6em;
     }
   }

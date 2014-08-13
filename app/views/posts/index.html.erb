@@ -4,15 +4,19 @@
   </style>
 <% end %>
 
+<div class="title-container">
+  <h1 class="title"><%= @increment %>s</h1>
+</div>
+
 <div class="post-list">
   <% (@first_year..@current_year).reverse_each do |year| %>
 
-    <div class="year-banner">
-      <section>
+    <section class="year-banner">
+      <div>
         <%= fa_icon "bookmark" %>
         <span><%= year %></span>
-      </section>
-    </div>
+      </div>
+    </section>
 
     
     <ul>
