@@ -5,7 +5,7 @@ footer.main{
   padding: 4em 0 3em;
   box-shadow: 0 2px 17px 0 rgba(0, 0, 0, 0.2), 0 -2px 20px 0 rgba(0, 0, 0, 0.19);
 
-  div{ @include outer-container; }
+  div{ @extend %outer-container; }
 
   ul.contributions{
     float: left;

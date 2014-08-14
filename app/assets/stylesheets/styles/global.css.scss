@@ -30,7 +30,8 @@ body{
   @include outer-container;
 
   @media screen and (max-width: 68em){
-    padding: 0 1em;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
 

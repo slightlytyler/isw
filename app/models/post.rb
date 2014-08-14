@@ -22,8 +22,8 @@ class Post < ActiveRecord::Base
 
     FlickRaw.api_key="8e60dd79e0047a5c41f6f640cf5016e8"
     FlickRaw.shared_secret="8096d39dd9f30227"
-    flickr_id = '50076792@N00'
-    @@flickr_feed = flickr.photos.search(:user_id => flickr_id, :sort => 'relevance')
+    flickr_id = '94345087@N05'
+    @@flickr_feed = flickr.photos.search(:user_id => flickr_id, :sort => 'interestingness-desc')
 
     def self.update_from_feed
         isw_url = 'http://iswiraq.blogspot.com/feeds/posts/default?start-index=1&max-results=5000'
