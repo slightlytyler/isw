@@ -5,11 +5,13 @@ body {
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $unitless-line-height;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-family;
   line-height: $header-line-height;
+  font-weight: 400;
   margin: 0;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
 }

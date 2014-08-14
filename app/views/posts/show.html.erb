@@ -16,9 +16,10 @@
   <% next_month = (!(month == 12) ? month + 1 : 01 ) %>
   <% next_year = (!(week == 53) ? year : year + 1 ) %>
 
-  <% months = (first.strftime('%B') == last.strftime('%B')) ? first.strftime('%B') : last.strftime('%B') + ' / ' + first.strftime('%B') %>
+  <% months = (first.strftime('%B') == last.strftime('%B')) ? first.strftime('%B') : first.strftime('%B') + ' / ' + last.strftime('%B') %>
 
-  <h2 class="title"><%= months %> <%= first.strftime('%e') %> - <%= last.strftime('%e') %></h2>
+  <h2 class="title"><%= months %><br>
+  <%= first.strftime('%e') %> - <%= last.strftime('%e') %></h2>
 
   <section class="year-banner">
     <div>

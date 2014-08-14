@@ -8,8 +8,24 @@ footer.main{
   div{ @include outer-container; }
 
   ul.contributions{
+    float: left;
     border-left: 5px solid $material-yellow;
     padding-left: 1em;
+  }
+
+  $logo-slightly-size: 2rem;
+  .logo.slightly{
+    width: $logo-slightly-size;
+    height: $logo-slightly-size;
+    position: absolute;
+    bottom: .5em;
+    right: 1em;
+
+    img{
+      width: 100%;
+      height: auto;
+      transform: scale(1.2, 1.2) translateY(10%);
+    }
   }
 
 }
