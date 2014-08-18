@@ -18,13 +18,12 @@ footer.main{
     width: $logo-slightly-size;
     height: $logo-slightly-size;
     position: absolute;
-    bottom: .5em;
-    right: 1em;
+    bottom: 1.5em;
+    right: 3em;
 
-    img{
-      width: 100%;
-      height: auto;
-      transform: scale(1.2, 1.2) translateY(10%);
+    i{
+      color: $material-yellow;
+      font-size: 3em;
     }
   }
 
